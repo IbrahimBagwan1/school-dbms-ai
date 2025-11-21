@@ -1,110 +1,67 @@
-School DBMS + AI System
-An AI-powered School Database Management System built with Django, FastAPI, PostgreSQL, PyTorch, HTMX, Celery, Redis & Docker
-⭐ Overview 
+# School DBMS + AI System
 
-This project is a modern, scalable School Management & AI System, combining:
+An AI-powered School Database Management System built with Django, FastAPI, PostgreSQL, PyTorch, HTMX, Celery, Redis & Docker.
 
-Django (Web App + Admin + Templates)
+A modern, scalable system combining a full-featured Django web app (admin + templates) with a FastAPI ML inference service and background workers.
 
-FastAPI (Machine Learning inference service)
+---
 
-PostgreSQL (Primary Database)
+## Quick overview
 
-Redis (Cache + Celery Broker)
+- Django: web app, admin, templates, role-based auth  
+- FastAPI: ML inference endpoints (PyTorch models)  
+- PostgreSQL: primary database  
+- Redis: cache + Celery broker  
+- Celery: background tasks (reports, async jobs)  
+- MLflow: model tracking & registry  
+- HTMX + Bootstrap: dynamic, lightweight UI  
+- Docker Compose: one-command full stack
 
-PyTorch (AI models for similarity, NER, classification, analytics)
+---
 
-MLflow (Model tracking & registry)
+## Features
 
-HTMX (Dynamic UI without React)
+Core DBMS
+- Student, teacher management
+- Classes, divisions, subjects
+- Attendance, exams, marks, report cards
+- Admin dashboards, role-based auth, secure internal APIs
 
-Bootstrap (Clean UI)
+AI features
+- Text similarity for complaint classification
+- NER for information extraction
+- Predictive analytics modules
+- ML model versioning via MLflow
+- FastAPI inference endpoint
 
-Docker Compose (One-command full stack setup)
+Extras
+- Complaint registration & categorization
+- Automated report generation (Celery)
+- Optional: online voting (blockchain extension)
 
-This system handles all core school operations plus integrated AI features.
+---
 
-🎯 Core Features
-🏫 School DBMS
+## Tech stack
 
-Student management
-
-Teacher management
-
-Classes, divisions, subjects
-
-Attendance management
-
-Exam management & marks entry
-
-Report cards
-
-Admin dashboards
-
-Role-based authentication
-
-Secure internal APIs
-
-🤖 AI Features
-
-Text similarity for complaint classification
-
-NER for extracting important information
-
-Predictive analytics modules
-
-ML model versioning using MLflow
-
-FastAPI inference endpoint
-
-📢 Additional Modules
-
-Online voting system using blockchain (optional extension)
-
-Complaint registration & categorization
-
-Automated report generation (Celery)
-
-🏗 Tech Stack
 Backend
+- Django, Gunicorn, Uvicorn
 
-Django
+ML & AI
+- PyTorch, MLflow, FastAPI
 
-FastAPI
-
-AI & ML
-
-PyTorch
-
-MLflow
-
-Database & Cache
-
-PostgreSQL
-
-Redis
+DB & Cache
+- PostgreSQL, Redis
 
 Frontend
+- Django templates, HTMX, Bootstrap
 
-Django Templates
+Infra
+- Docker, Docker Compose, nginx
 
-HTMX
+---
 
-Bootstrap
+## Project structure
 
-Infrastructure
-
-Docker
-
-Docker Compose
-
-Nginx
-
-Gunicorn
-
-Uvicorn
-
-📂 Project Structure
 school-dbms-ai/
 │
 ├── web/                     # Django web application
@@ -130,70 +87,105 @@ school-dbms-ai/
 ├── README.md
 └── requirements.txt
 
-🚀 Getting Started
-1. Clone the repository
+---
+
+## Getting started
+
+1. Clone
+```
 git clone https://github.com/your-username/school-dbms-ai.git
 cd school-dbms-ai
+```
 
-2. Create your .env
+2. Create environment file
+```
 cp .env.example .env
+# Edit .env as needed (DATABASE_URL, REDIS_URL, SECRET_KEY, etc.)
+```
 
-3. Run the entire system
+3. Build & start
+```
 docker-compose up --build
+```
 
-4. Access apps
-Service	URL
-Django Web App	http://localhost:8000/
+4. Services (default ports)
+- Django Web App: http://localhost:8000/
+- FastAPI ML Service (docs): http://localhost:8001/docs
+- Admin Panel: http://localhost:8000/admin/
+- Nginx (if enabled): http://localhost/
 
-FastAPI ML Service	http://localhost:8001/docs
+---
 
-Admin Panel	http://localhost:8000/admin/
+## Environment variables (example keys)
 
-Nginx (Prod Reverse Proxy)	http://localhost/
-🧪 Testing
+- SECRET_KEY
+- DATABASE_URL (Postgres)
+- REDIS_URL
+- MLFLOW_TRACKING_URI
+- DJANGO_ALLOWED_HOSTS
+- EMAIL / SMTP settings (optional)
+
+Refer to .env.example for full list.
+
+---
+
+## Development & testing
 
 Run Django tests:
-
+```
 docker-compose exec web python manage.py test
+```
 
-🧠 MLflow Integration
+Local ML model changes:
+- Replace or update model files in /ml/model/
+- Restart ml service or re-deploy container
 
-Models are logged to local MLflow server.
+CI & quality:
+- Black formatter
+- Pre-commit hooks (optional)
+- GitHub Actions for CI (tests & builds)
 
-Replace model in /ml/model/ to update inference.
+---
 
-All versions tracked automatically.
+## MLflow
 
-🛠 Development Tools
+- Models logged to configured MLflow server
+- Use MLflow UI to browse model versions
+- Inference service reads model files from /ml/model/ or from MLflow registry (configurable)
 
-Black code formatter
+---
 
-Pre-commit hooks (optional)
+## Deployment
 
-GitHub Actions (CI for tests & builds)
+- Use docker-compose.prod.yml for production orchestration
+- Use nginx as reverse proxy and SSL termination
+- Ensure environment variables and secrets are set securely
+- Use a managed Postgres or secure production Postgres instance
 
-🤝 Contributing
+---
 
-Contributions are welcome! Please follow the PR format:
+## Contributing
 
-Fork the repo
+- Fork the repo
+- Create a feature branch
+- Commit changes with clear messages
+- Open a PR and describe the changes
+- Follow code style and run tests
 
-Create a new branch
+---
 
-Commit changes
+## License
 
-Create a PR
+MIT License (change if preferred)
 
-📄 License
+---
 
-This project is currently under the MIT License (or change if preferred).
+## Author
 
-👤 Author
-
-Ibrahim Rasulahmed Bagwan
-Belgaum, Karnataka
+Ibrahim Rasulahmed Bagwan  
+Belgaum, Karnataka  
 YouTube: AI with Ibrahim
 
-⭐ Support
+---
 
-If you like this project, consider giving the repository a ⭐ on GitHub!
+If this README is for a public repo, consider adding usage examples, endpoint docs (FastAPI), and sample screenshots for clarity.
