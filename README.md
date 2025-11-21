@@ -1,6 +1,6 @@
 School DBMS + AI System
 An AI-powered School Database Management System built with Django, FastAPI, PostgreSQL, PyTorch, HTMX, Celery, Redis & Docker
-⭐ Overview
+⭐ Overview 
 
 This project is a modern, scalable School Management & AI System, combining:
 
